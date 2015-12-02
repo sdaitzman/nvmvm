@@ -1,4 +1,4 @@
-# nvmvm
+# NVMVM
 Node Version Manager Version Manager
 
 ## Usage
