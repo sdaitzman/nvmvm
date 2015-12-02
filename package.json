@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "semver": "^5.1.0",
+    "shell-task": "^1.0.0"
+  }
+}
