@@ -22,7 +22,7 @@ fs.readFile(path.join(__dirname, 'package.json'), 'utf8', function(err, data) {
 		if(version === '--version') {
 			console.log(chalk.blue('nvmvmv@' + nvmvmVersion + ' running on ' + 'node@' + process.version));
 		} else if(!semver.valid(version)) {
-			console.log('Version number invalid. Version number should look like this: "0.29.0"');
+			console.log(chalk.red('Version number invalid. Version number should look like this: "0.29.0"'));
 		} else {
 			console.log(chalk.green('\nVersion number appears valid. Downloading installer for NVM@' + version + '\n'));
 			new Task('curl -O https://raw.githubusercontent.com/creationix/nvm/v' + version + '/install.sh')
