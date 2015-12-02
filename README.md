@@ -11,7 +11,9 @@ No
 Yes
 
 ## Are you for real?
-`console.log(true)`
+```js
+console.log(true)
+```
 
 ## TODO:
 - ~~colors~~
