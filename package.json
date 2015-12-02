@@ -1,12 +1,32 @@
 {
-	"name": "nvmvm",
-	"version": "1.0.0",
-	"dependencies": {
-		"chalk": "^1.1.1",
-		"semver": "^5.1.0",
-		"shell-task": "^1.0.0"
-	},
-	"bin": {
-		"nvmvm": "./nvmvm"
-	}
+  "name": "nvmvm",
+  "version": "1.0.0",
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "semver": "^5.1.0",
+    "shell-task": "^1.0.0"
+  },
+  "bin": {
+    "nvmvm": "./nvmvm"
+  },
+  "description": "Node Version Manager Version Manager",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdaitzman/nvmvm.git"
+  },
+  "keywords": [
+    "NVM",
+	"version manager",
+	"NVMVM"
+  ],
+  "author": "sdaitzman",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/sdaitzman/nvmvm/issues"
+  },
+  "homepage": "https://github.com/sdaitzman/nvmvm#readme"
 }
