@@ -4,5 +4,8 @@
 		"chalk": "^1.1.1",
 		"semver": "^5.1.0",
 		"shell-task": "^1.0.0"
+	},
+	"bin": {
+		"nvmvm": "./nvmvm"
 	}
 }
