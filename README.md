@@ -18,8 +18,8 @@ Yes
 console.log(true)
 ```
 
-## TODO:
-- ~~colors~~
-- ~~better README~~
-- ~~print what it's doing~~
-- ~~detect when version number does not exist~~
+## Features
+- colors
+- prints what it's doing
+- detects when version number does not exist
+- cleans up after itself better than you do
