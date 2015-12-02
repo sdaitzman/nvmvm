@@ -2,7 +2,7 @@
 Node Version Manager Version Manager
 
 ## Usage
-To install, download or clone this repository. Run `$ npm install` and then `$ ./nvmvm <VERSION>` where `<VERSION>` is the NVM version you wish to install.
+Run `# npm install -g nvmvm` and then `$ nvmvm <VERSION>` where `<VERSION>` is the NVM version you wish to install.
 
 ## Is this stable?
 No

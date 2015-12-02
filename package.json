@@ -1,6 +1,6 @@
 {
   "name": "nvmvm",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "dependencies": {
     "chalk": "^1.1.1",
     "semver": "^5.1.0",
