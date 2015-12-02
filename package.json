@@ -1,7 +1,8 @@
 {
-  "dependencies": {
-    "chalk": "^1.1.1",
-    "semver": "^5.1.0",
-    "shell-task": "^1.0.0"
-  }
+	"version": "0.1.0",
+	"dependencies": {
+		"chalk": "^1.1.1",
+		"semver": "^5.1.0",
+		"shell-task": "^1.0.0"
+	}
 }

@@ -2,40 +2,52 @@
 var fs = require('fs');
 var semver = require('semver');
 var Task = require('shell-task');
+var chalk = require('chalk');
 
-if(!process.argv[2]) {
-	// catch if no version number provided
-	console.log('Please provide a version number.');
-} else if(process.argv[3]) {
-	// catch if too many inputs provided
-	console.log('\n Too many inputs. Please use the format: \n\n \t\t $ ./nvmvm 0.29 \n');
-} else {
-	var version = process.argv[2];
-
-	if(!semver.valid(version)) {
-		console.log('Version number invalid. Version number should look like this: "0.29.0"');
+fs.readFile('package.json', 'utf8', function(err, data) {
+	if (err) throw err;
+	var nvmvmVersion = JSON.parse(data).version;
+	if(!process.argv[2]) {
+		// catch if no version number provided
+		console.log(chalk.red('Please provide a version number. \n'));
+	} else if(process.argv[3]) {
+		// catch if too many inputs provided
+		console.log(chalk.red('Too many inputs. Please format like this: \n\n \t $ ./nvmvm 0.29 \n'));
 	} else {
-		new Task('curl -O https://raw.githubusercontent.com/creationix/nvm/v' + version + '/install.sh')
-		.then(function(next) {
-			fs.readFile('install.sh', 'utf8', function(err, data) {
-				if (err) throw err;
-				if(data === 'Not Found') {
-					console.log('That version of NVM appears not to exist. Aborting.');
-					fs.unlink('install.sh');
-					process.exit();
-				} else next()
+		var version = process.argv[2];
+
+		if(version === '--version') {
+			console.log(chalk.blue('nvmvmv@' + nvmvmVersion + ' running on ' + 'node@' + process.version));
+		} else if(!semver.valid(version)) {
+			console.log('Version number invalid. Version number should look like this: "0.29.0"');
+		} else {
+			console.log(chalk.green('\nVersion number appears valid. Downloading installer for NVM@' + version + '\n'));
+			new Task('curl -O https://raw.githubusercontent.com/creationix/nvm/v' + version + '/install.sh')
+			.then(function validateInstaller(next) {
+				console.log(chalk.green('\nValidating and attempting to run installer...\n'));
+				fs.readFile('install.sh', 'utf8', function(err, data) {
+					if (err) throw err;
+					if(data === 'Not Found') {
+						console.log(chalk.red('Installer not found. That version of NVM appears not to exist. Cleaning up and aborting.'));
+						fs.unlink('install.sh');
+						process.exit();
+					} else next()
+				})
 			})
-		})
-		.then('bash install.sh')
-		.then('rm install.sh')
-		.run(
-			function(err, next) {
-				if(err) {
-					console.log('Error encountered in this step. Please try again.');
-				} else {
-					console.log('NVM install script is finished.')
+			.then('bash install.sh')
+			.then(function logStatus(next) {
+				console.log(chalk.green('Installer is finished. Cleaning up.'));
+			})
+			.then('rm install.sh')
+			.run(
+				function(err, next) {
+					if(err) {
+						console.log('Error encountered in this step. Please try again.');
+					} else {
+						console.log(chalk.green('nvmvm is finished.'));
+					}
 				}
-			}
-		);
+			);
+		}
 	}
-}
+});
