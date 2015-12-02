@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+var semver = require('semver');
+var spawn = require('child_process').spawn;
+
+if(!process.argv[2]) {
+	// catch if no version number provided
+	console.log('Please provide a version number.');
+} else if(process.argv[3]) {
+	// catch if too many inputs provided
+	console.log('\n Too many inputs. Please use the format: \n\n \t\t $ ./nvmvm 0.29 \n');
+} else {
+	var version = process.argv[2];
+
+	if(!semver.valid(version)) {
+		console.log('Version number invalid. Version number should look like this: "0.29.0"');
+	} else {
+
+	}
+}
