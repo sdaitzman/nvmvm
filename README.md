@@ -10,6 +10,9 @@ No
 ## Does it actually work?
 Yes
 
+## Prove that it works
+[Ye of little faith](https://asciinema.org/a/bbszqtad86s6ir0dsy92pknrb)
+
 ## Are you for real?
 ```js
 console.log(true)
